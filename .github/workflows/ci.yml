@@ -57,7 +57,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2.9.1
 
       - name: Build workspace
-        run: cargo build --workspace --all-features -- --skip compile_fail
+        run: cargo build --workspace --all-features
 
       - name: Run tests (all features)
         run: cargo test --workspace --all-features -- --skip compile_fail
