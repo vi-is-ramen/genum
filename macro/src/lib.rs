@@ -47,15 +47,15 @@ use parse::{GenumArgs, collect_groups};
 /// ```
 ///
 /// + `repr_type`: the integer representation (`u8`, `u16`, `u32`, `u64`,
-///  `u128`, `usize`, `i8`, `i16`, `i32`, `i64`, `i128`, `isize`).
+///   `u128`, `usize`, `i8`, `i16`, `i32`, `i64`, `i128`, `isize`).
 /// + `exhaustive`: disables auto-hole-filling; every group must be fully
-///  populated.
+///   populated.
 /// + `error = Name`: overrides the default `{Umbrella}NarrowError` error enum
-///  name.
+///   name.
 /// + `#[group(...)]` on a variant declares a virtual group marker (the marker
-///  itself is not emitted). Subsequent variants belong to that group.
+///   itself is not emitted). Subsequent variants belong to that group.
 /// + `Variant = value` forces a specific discriminant; the remaining auto
-///  variants fill the free slots in ascending order.
+///   variants fill the free slots in ascending order.
 ///
 /// The macro preserves doc-comments on the umbrella enum and on every regular
 /// variant, in both the umbrella and group enums.
