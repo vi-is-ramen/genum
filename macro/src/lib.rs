@@ -8,7 +8,7 @@
 
 use proc_macro::TokenStream;
 use quote::format_ident;
-use syn::{parse_macro_input, Data, DeriveInput};
+use syn::{Data, DeriveInput, parse_macro_input};
 
 mod codegen;
 mod literal;
@@ -17,7 +17,7 @@ mod parse;
 mod resolve;
 mod validate;
 
-use parse::{collect_groups, GenumArgs};
+use parse::{GenumArgs, collect_groups};
 
 /// Transforms an umbrella enum into a set of grouped, `#[repr(T)]` enums with typed
 /// narrowing conversions.

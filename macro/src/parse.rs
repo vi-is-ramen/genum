@@ -1,6 +1,6 @@
 use crate::model::{Group, GroupAttr, RangeElement, VariantInfo};
 use syn::{
-    parse::Parse, parse::ParseStream, punctuated::Punctuated, Attribute, Ident, Token, Type,
+    Attribute, Ident, Token, Type, parse::Parse, parse::ParseStream, punctuated::Punctuated,
 };
 
 mod kw {

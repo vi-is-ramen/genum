@@ -49,7 +49,11 @@ pub fn resolve_group_discriminants(group: &mut Group) -> syn::Result<()> {
             &group.name,
             format!(
                 "Not enough discriminant slots in group `{}`: {} auto variants but only {} free slots ({} forced, {} total)",
-                group.name, auto_count, free_count, forced_seen.len(), all_slots.len()
+                group.name,
+                auto_count,
+                free_count,
+                forced_seen.len(),
+                all_slots.len()
             ),
         ));
     }
