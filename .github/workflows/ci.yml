@@ -37,7 +37,7 @@ jobs:
         run: cargo fmt --all --check
 
       - name: Run clippy
-        run: cargo clippy --workspace --all-targets --all-features --locked
+        run: cargo clippy --workspace --all-targets --all-features
 
   test:
     name: Test (${{ matrix.os }}, ${{ matrix.toolchain }})
@@ -79,7 +79,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2.9.1
 
       - name: Run trybuild tests
-        run: cargo test --test compile_fail --locked
+        run: cargo test --test compile_fail
 
   docs:
     name: Documentation
@@ -94,4 +94,4 @@ jobs:
       - name: Build docs (deny warnings)
         env:
           RUSTDOCFLAGS: -D warnings
-        run: cargo doc --workspace --no-deps --all-features --locked
+        run: cargo doc --workspace --no-deps --all-features

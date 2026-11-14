@@ -11,7 +11,8 @@ repository = "https://github.com/vi-is-ramen/genum"
 
 [package]
 name = "genum"
-description = "Proc-macro for declaring grouped integer-repr enums with safe narrowing conversions"
+description = "Compile-time verified enum narrowing with zero-cost conversions and niche
+optimizations"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
