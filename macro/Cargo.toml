@@ -1,0 +1,26 @@
+[package]
+name = "genum-macro"
+description = "Proc-macro implementation for genum"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+readme = "../README.md"
+keywords = ["enum", "macro", "proc-macro"]
+categories = ["rust-patterns", "no-std"]
+include = [
+    "src/**/*.rs",
+    "Cargo.toml",
+    "../README.md",
+    "../LICENSE-MIT",
+    "../LICENSE-APACHE",
+]
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "3", features = ["full", "extra-traits"] }
+quote = "1"
+proc-macro2 = "1"

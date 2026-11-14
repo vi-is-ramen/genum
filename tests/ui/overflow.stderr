@@ -1,0 +1,5 @@
+error: value 299 overflows u8
+ --> tests/ui/overflow.rs:6:5
+  |
+6 |     Animal,
+  |     ^^^^^^

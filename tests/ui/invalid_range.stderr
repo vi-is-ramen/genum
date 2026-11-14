@@ -1,0 +1,5 @@
+error: range end must be strictly greater than start
+ --> tests/ui/invalid_range.rs:5:17
+  |
+5 |     #[group(10..5)] // end < start
+  |                 ^

@@ -1,0 +1,5 @@
+error: Group `Food` overlaps with group `Animal`: range [0..=9] intersects [5..=14]
+  --> tests/ui/overlapping_groups.rs:10:5
+   |
+10 |     Food,
+   |     ^^^^

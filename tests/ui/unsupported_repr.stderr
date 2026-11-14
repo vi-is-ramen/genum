@@ -1,0 +1,5 @@
+error: unsupported repr `f32`, expected one of: u8, u16, u32, u64, u128, usize, i8, i16, i32, i64, i128, isize
+ --> tests/ui/unsupported_repr.rs:3:9
+  |
+3 | #[genum(f32)]
+  |         ^^^

@@ -1,0 +1,5 @@
+error: Duplicate forced discriminant 5 in group `Animal`
+ --> tests/ui/duplicate_forced.rs:8:5
+  |
+8 |     Cat = 5, // duplicate
+  |     ^^^

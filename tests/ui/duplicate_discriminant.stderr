@@ -1,0 +1,5 @@
+error: Group `Food` overlaps with group `Animal`: range [42..=42] intersects [42..=43]
+  --> tests/ui/duplicate_discriminant.rs:12:5
+   |
+12 |     Food,
+   |     ^^^^

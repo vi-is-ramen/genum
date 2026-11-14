@@ -1,0 +1,5 @@
+error: Forced discriminant 20 is outside the ranges of group `Animal`
+ --> tests/ui/forced_outside_range.rs:7:5
+  |
+7 |     Dog = 20, // outside range
+  |     ^^^

@@ -1,0 +1,5 @@
+error: Not enough discriminant slots in group `Animal`: 3 auto variants but only 2 free slots (0 forced, 2 total)
+ --> tests/ui/not_enough_slots.rs:6:5
+  |
+6 |     Animal,
+  |     ^^^^^^

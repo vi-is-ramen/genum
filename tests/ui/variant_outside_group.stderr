@@ -1,0 +1,5 @@
+error: Variant must belong to a group (rest variants are forbidden). Open a group first with a marker variant like `#[group(0..N)] GroupName,`.
+ --> tests/ui/variant_outside_group.rs:5:5
+  |
+5 |     Dog, // error: variant outside group
+  |     ^^^

@@ -1,0 +1,5 @@
+error: unexpected end of input, expected integer literal
+ --> tests/ui/empty_group.rs:5:13
+  |
+5 |     #[group()]
+  |             ^
