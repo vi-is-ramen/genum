@@ -1,3 +1,10 @@
+[![Crates.io](https://img.shields.io/crates/v/genum.svg)](https://crates.io/crates/genum)
+[![Documentation](https://docs.rs/genum/badge.svg)](https://docs.rs/genum)
+[![License](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg)](#license)
+[![CI](https://github.com/vi-is-ramen/genum/actions/workflows/ci.yml/badge.svg)](https://github.com/vi-is-ramen/genum/actions/workflows/ci.yml)
+[![MSRV](https://img.shields.io/badge/MSRV-1.88-blue.svg)](https://www.rust-lang.org)
+[![no_std](https://img.shields.io/badge/no__std-compatible-green.svg)](#no_std-support)
+
 # genum
 
 **Compile-time verified enum narrowing with zero-cost conversions and niche

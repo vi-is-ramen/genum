@@ -33,4 +33,4 @@ include = [
 genum-macro = { path = "./macro", version = "=0.1.0" }
 
 [dev-dependencies]
-trybuild = "1.0"
+trybuild = "1"
