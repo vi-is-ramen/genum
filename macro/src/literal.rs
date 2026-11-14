@@ -72,10 +72,7 @@ pub fn make_literal(
             if value < i32::MIN as i128 || value > i32::MAX as i128 {
                 return Err(syn::Error::new(
                     span,
-                    format!(
-                        "value {} overflows isize (limited to i32 range for portability)",
-                        value
-                    ),
+                    format!("value {value} overflows isize (limited to i32 range for portability)"),
                 ));
             }
             proc_macro2::Literal::isize_suffixed(value as isize)
@@ -149,7 +146,7 @@ pub fn check_value_fits_repr(repr: &Type, value: i128, span: proc_macro2::Span) 
             if value < 0 {
                 Err(syn::Error::new(
                     span,
-                    format!("value {} overflows u128", value),
+                    format!("value {value} overflows u128"),
                 ))
             } else {
                 Ok(())
