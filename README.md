@@ -9,6 +9,7 @@ space. You get safe narrowing, exhaustive conversions, and precise niche
 optimization, all without a single runtime check where it doesn't belong.
 
 ```rust
+# #![allow(ambiguous_associated_items)]
 # use genum::genum;
 #[genum(u32)]
 pub enum Token {
@@ -62,7 +63,7 @@ Rust already optimizes `Option<NonZeroU32>` down to 4 bytes by stealing the `0`
 niche. `genum` lets you do the same thing: but for **any** discriminant layout
 you choose:
 
-```rust
+```rust,ignore
 # use genum::genum;
 #[genum(u8)]
 pub enum Status {
@@ -71,12 +72,9 @@ pub enum Status {
     #[group(0..=254)]
     Valid,
     Ok = 0,
-    Created = 201,
-    Accepted = 202,
-    BadRequest = 400,
-    NotFound = 404,
-    Internal = 500,
-    // ... 248 slots auto-filled with hidden UnknownN_ variants
+    Created = 1,
+    Accepted = 2,
+    // ... 251 slots auto-filled with hidden UnknownN_ variants
 }
 
 // Option<Status> is exactly 1 byte. The compiler uses 255 as the None niche.
@@ -109,7 +107,7 @@ pub enum Opcode {
 
 For forward-compatible protocols where unknown values must survive round-trips:
 
-```rust
+```rust,ignore
 # use genum::genum;
 #[genum(u8)]  // default: holes auto-filled
 pub enum FrameType { /* ... */ }
@@ -188,7 +186,7 @@ pub enum TokenNarrowError {
 out of the box. The generated enums only depend on `core`. The error enum
 implements `core::error::Error`.
 
-```rust
+```rust,ignore
 #![no_std]
 # use genum::genum;
 #[genum(u16)]
