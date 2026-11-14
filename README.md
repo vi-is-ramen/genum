@@ -188,7 +188,7 @@ pub enum TokenNarrowError {
 
 `genum` itself is a pure proc-macro: it emits code that works in `#![no_std]`
 out of the box. The generated enums only depend on `core`. The error enum
-implements `core::error::Error` (requires Rust 1.81+).
+implements `core::error::Error`.
 
 ```rust
 #![no_std]
@@ -200,14 +200,14 @@ pub enum Irq { /* ... */ }
 
 ## MSRV
 
-Rust **1.81** (for stable `core::error::Error`).
+Rust **1.85** (edition **2024**).
 
 ## Safety
 
 The macro uses `core::mem::transmute` internally, but every call site is sound
 by construction:
 
-+ `From<Group> for Umbrella` — every group discriminant is a member of the
++ `From<Group> for Umbrella`: every group discriminant is a member of the
   umbrella.
 + `TryFrom<Umbrella> for Group`: the range check runs **before** the transmute.
 + All enums share the same `#[repr(T)]` and derive `Clone + Copy`.
@@ -220,8 +220,8 @@ You never write `unsafe` yourself.
 
 Licensed under either of
 
-- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or <https://www.apache.org/licenses/LICENSE-2.0>)
-- MIT license ([LICENSE-MIT](LICENSE-MIT) or <https://opensource.org/licenses/MIT>)
++ Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or <https://www.apache.org/licenses/LICENSE-2.0>)
++ MIT license ([LICENSE-MIT](LICENSE-MIT) or <https://opensource.org/licenses/MIT>)
 
 at your option.
 
