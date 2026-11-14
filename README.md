@@ -8,14 +8,8 @@ of tightly-typed sub-enums: each owning a well-defined slice of the discriminant
 space. You get safe narrowing, exhaustive conversions, and precise niche
 optimization, all without a single runtime check where it doesn't belong.
 
-```toml
-[dependencies]
-genum = ".."
-```
-
 ```rust
-use genum::genum;
-
+# use genum::genum;
 #[genum(u32)]
 pub enum Token {
     #[group(0..16)]
@@ -50,7 +44,7 @@ This single declaration gives you:
 A `Token::Operator` is just a `Token` with a narrower type. Conversions are
 single `transmute` calls: the optimizer sees right through them:
 
-```rust
+```rust,ignore
 let tok: Token = /* ... */;
 
 match tok.try_into() {
@@ -69,6 +63,7 @@ niche. `genum` lets you do the same thing: but for **any** discriminant layout
 you choose:
 
 ```rust
+# use genum::genum;
 #[genum(u8)]
 pub enum Status {
     // Reserve the entire 0..=254 range for "valid" codes;
@@ -98,6 +93,7 @@ optimizer to exploit.
 For wire formats where every value means something:
 
 ```rust
+# use genum::genum;
 #[genum(u8, exhaustive)]
 pub enum Opcode {
     #[group(0..4)]
@@ -114,6 +110,7 @@ pub enum Opcode {
 For forward-compatible protocols where unknown values must survive round-trips:
 
 ```rust
+# use genum::genum;
 #[genum(u8)]  // default: holes auto-filled
 pub enum FrameType { /* ... */ }
 // Unknown values become `UnknownN_` variants, not UB.
@@ -124,6 +121,7 @@ pub enum FrameType { /* ... */ }
 When a protocol pins specific values:
 
 ```rust
+# use genum::genum;
 #[genum(u8)]
 pub enum Sig {
     #[group(0..10)]
@@ -158,7 +156,7 @@ overflows are caught at compile time.
 
 ## API
 
-```rust
+```rust,ignore
 // Narrowing: Token -> Operator (fallible, range-checked)
 let op: Operator = token.try_into()?;
 
@@ -192,8 +190,7 @@ implements `core::error::Error`.
 
 ```rust
 #![no_std]
-use genum::genum;
-
+# use genum::genum;
 #[genum(u16)]
 pub enum Irq { /* ... */ }
 ```
