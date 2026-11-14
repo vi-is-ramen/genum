@@ -47,8 +47,7 @@ pub fn validate_group_ranges(groups: &[Group]) -> syn::Result<()> {
             return Err(syn::Error::new_spanned(
                 v2_name,
                 format!(
-                    "Discriminant {} is claimed by both `{}::{}` and `{}::{}`",
-                    disc, g1_name, v1_name, g2_name, v2_name
+                    "Discriminant {disc} is claimed by both `{g1_name}::{v1_name}` and `{g2_name}::{v2_name}`"
                 ),
             ));
         }

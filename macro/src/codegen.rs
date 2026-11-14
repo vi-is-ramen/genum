@@ -81,10 +81,10 @@ pub fn gen_error_enum(
 
     for group in groups {
         let group_name = &group.name;
-        let variant_name = format_ident!("To{}", group_name);
+        let variant_name = format_ident!("To{group_name}");
         let obj_str = enum_name.to_string();
         let group_str = group_name.to_string();
-        let msg = format!("{} -> {}", obj_str, group_str);
+        let msg = format!("{obj_str} -> {group_str}");
 
         error_variants.push(quote! { #variant_name });
         error_display_arms.push(quote! {

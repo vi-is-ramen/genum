@@ -37,7 +37,7 @@ pub fn make_literal(
             if value < 0 {
                 return Err(syn::Error::new(
                     span,
-                    format!("value {} overflows u128", value),
+                    format!("value {value} overflows u128"),
                 ));
             }
             proc_macro2::Literal::u128_suffixed(value as u128)
@@ -46,10 +46,7 @@ pub fn make_literal(
             if value < 0 || value > u32::MAX as i128 {
                 return Err(syn::Error::new(
                     span,
-                    format!(
-                        "value {} overflows usize (limited to u32::MAX for portability)",
-                        value
-                    ),
+                    format!("value {value} overflows usize (limited to u32::MAX for portability)",),
                 ));
             }
             proc_macro2::Literal::usize_suffixed(value as usize)
@@ -87,9 +84,8 @@ pub fn make_literal(
             return Err(syn::Error::new_spanned(
                 repr,
                 format!(
-                    "unsupported repr `{}`, expected one of: \
+                    "unsupported repr `{other}`, expected one of: \
                      u8, u16, u32, u64, u128, usize, i8, i16, i32, i64, i128, isize",
-                    other
                 ),
             ));
         }
@@ -109,7 +105,7 @@ fn check_unsigned(value: i128, max: i128, name: &str, span: proc_macro2::Span) -
     if value < 0 || value > max {
         Err(syn::Error::new(
             span,
-            format!("value {} overflows {}", value, name),
+            format!("value {value} overflows {name}"),
         ))
     } else {
         Ok(())
@@ -126,7 +122,7 @@ fn check_signed(
     if value < min || value > max {
         Err(syn::Error::new(
             span,
-            format!("value {} overflows {}", value, name),
+            format!("value {value} overflows {name}"),
         ))
     } else {
         Ok(())
@@ -163,10 +159,7 @@ pub fn check_value_fits_repr(repr: &Type, value: i128, span: proc_macro2::Span) 
             if value < 0 || value > u32::MAX as i128 {
                 Err(syn::Error::new(
                     span,
-                    format!(
-                        "value {} overflows usize (limited to u32::MAX for portability)",
-                        value
-                    ),
+                    format!("value {value} overflows usize (limited to u32::MAX for portability)"),
                 ))
             } else {
                 Ok(())
@@ -181,10 +174,7 @@ pub fn check_value_fits_repr(repr: &Type, value: i128, span: proc_macro2::Span) 
             if value < i32::MIN as i128 || value > i32::MAX as i128 {
                 Err(syn::Error::new(
                     span,
-                    format!(
-                        "value {} overflows isize (limited to i32 range for portability)",
-                        value
-                    ),
+                    format!("value {value} overflows isize (limited to i32 range for portability)"),
                 ))
             } else {
                 Ok(())
@@ -193,9 +183,8 @@ pub fn check_value_fits_repr(repr: &Type, value: i128, span: proc_macro2::Span) 
         Some(other) => Err(syn::Error::new_spanned(
             repr,
             format!(
-                "unsupported repr `{}`, expected one of: \
+                "unsupported repr `{other}`, expected one of: \
                  u8, u16, u32, u64, u128, usize, i8, i16, i32, i64, i128, isize",
-                other
             ),
         )),
         None => Err(syn::Error::new_spanned(
